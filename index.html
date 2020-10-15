@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="Style.css">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Démineur 💣 !</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="./index.js" type="module"></script>
+
+  </head>
+  <body>
+  <h1>
+    Démineur (Yohann Durel)
+  </h1>
+    <div id="demineur">
+      <div v-for="(row, x) in grid">
+        <span v-for="(cell, y) in row">
+          <span class="cellule" v-on:click.left="click(x, y)" v-on:click.right="flag(x, y, $event)">
+            {{ cell }}
+          </span>
+        </span>
+      </div>
+      <div v-if="fin===2" class="btn">Victoire</div>
+      <div v-if="fin===1"class="btn">Défaite</div>
+      <div v-on:click="restart" class="restart">Recommencer</div>
+    </div>
+  </body>
+</html>
